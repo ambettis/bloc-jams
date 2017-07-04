@@ -28,6 +28,21 @@ var albumMarconi = {
     ]
 };
 
+var bamaChampionships = {
+    title: 'The Dynasty',
+    artist: 'Nick Saban',
+    label: 'SEC',
+    year: '2017',
+    albumArtURL: 'http://larrybrownsports.com/wp-content/uploads/2016/01/nick-saban-grin.jpg',
+    songs: [
+       {title: '2009 Bama v Texas', duration: '37:21' },
+       {title: '2011 Bama v LSU', duration: '21:00' },
+       {title: '2012 Bama v Notre Dame', duration: '42:14'},
+       {title: '2015 Bama v Clemson', duration: '45:40' },
+       {title: '20?? Bama v ??', duration: '??:??'}
+    ]
+};
+
 var createSongRow = function (songNumber, songName, songLength){
     var template =
         '<tr class = "album-view-song-item">'
@@ -55,9 +70,18 @@ var setCurrentAlbum = function(album){
     for (var i = 0; i < album.songs.length; i++){
         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
     }
-
 };
+
+var albumsArray = [albumPicasso, albumMarconi, bamaChampionships];
 
 window.onload = function (){
-    setCurrentAlbum(albumPicasso);
+    setCurrentAlbum(albumsArray[0]);
 };
+
+
+document.getElementById("album-button").addEventListener("click", function(){
+    var first = albumsArray.shift();
+    albumsArray.push(first);
+    setCurrentAlbum(albumsArray[0]);
+    document.reload();
+});
