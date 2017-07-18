@@ -43,9 +43,12 @@
     padding-right: 1rem;
 }
 
+
+
 .player-bar .main-controls .previous {
     margin-right: 16.5%;
 }
+
 
 .player-bar .main-controls .play-pause {
     margin-right: 15%;
@@ -208,3 +211,4 @@
          display: block;
      }
  }
+ 
