@@ -1,3 +1,20 @@
+var setCurrentTimeInPlayerBar = function(currentTime){
+  $(".current-time").text(filterTimeCode(currentTime));
+  updateSeekBarWhileSongPlays();
+}
+
+var setTotalTimeInPlayerBar = function(totalTime){
+  $(".total-time").text(filterTimeCode(totalTime));
+  updateSeekBarWhileSongPlays();
+}
+
+var filterTimeCode = function(timeInSeconds){
+  var totalSeconds = parseInt(timeInSeconds);
+  var minutes = Math.floor(totalSeconds/60);
+  var seconds = totalSeconds%60;
+  return minutes + ":" + seconds;
+
+}
 var setSong = function(songNumber) {
   if (currentSoundFile) {
     currentSoundFile.stop();
@@ -34,7 +51,7 @@ var createSongRow = function(songNumber, songName, songLength) {
     '<tr class="album-view-song-item">' +
     '   <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>' +
     '   <td class="song-item-title">' + songName + '</td>' +
-    '   <td class="song-item-duration">' + songLength + '</td>' +
+    '   <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>' +
     '</tr>';
 
   var $row = $(template);
